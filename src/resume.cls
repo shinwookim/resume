@@ -3,16 +3,21 @@
 % \documentstyle{resume}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Copyright (C) 2010 by Trey Hunner
+% Copyright (C) 2024 by Shinwoo Kim
+% 
+% Original Header:
+% Copyright (C) 2010 - 2023 by Trey Hunner
 %
 % Copying and distribution of this file, with or without modification,
 % are permitted in any medium without royalty provided the copyright
 % notice and this notice are preserved.  This file is offered as-is,
 % without any warranty.
+% 
+% Created by Trey Hunner and modified by Shinwoo Kim
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesClass{resume}[2010/07/10 v0.9 Resume class]
+\ProvidesClass{resume}[2024/05/30 Resume class]
 
 \LoadClass[11pt,letterpaper]{article}
 

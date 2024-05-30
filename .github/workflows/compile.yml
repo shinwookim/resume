@@ -1,0 +1,24 @@
+name: Compile Resume.pdf
+
+on:
+    workflow_dispatch:
+    pull_request:
+        branches: [ $default-branch ]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Compile into PDF
+              uses: xu-cheng/latex-action@v3
+              with:
+                working_directory: src
+                root_file: main.tex
+
+            - name: Upload PDF file
+              uses: actions/upload-artifact@v4
+              with:
+                name: PDF
+                path: main.pdf
