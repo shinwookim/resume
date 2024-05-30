@@ -1,7 +1,3 @@
-% resume.cls
-
-% \documentstyle{resume}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Copyright (C) 2024 by Shinwoo Kim
 % 
@@ -19,12 +15,25 @@
 
 \ProvidesClass{resume}[2024/05/30 Resume class]
 
-\LoadClass[11pt,letterpaper]{article}
+\LoadClass[10pt,letterpaper]{article}
 
 \usepackage[parfill]{parskip}       % Do not indent paragraphs
 \usepackage{array}                  % required for boldface tabular columns
 \usepackage{ifthen}
-
+\usepackage{float}
+\usepackage{enumitem}
+\setlist[enumerate,itemize]{
+    topsep=0pt,
+    noitemsep
+}
+\usepackage{caption}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
 \nofiles                            % .aux files are not needed for resumes
 \pagestyle{empty}                   % resumes do not need page numbers
 
@@ -34,7 +43,7 @@
 \def \name#1{\def\@name{#1}}        % \name command can be used to set name
 \def \@name {}                      % Set \@name to empty by default
 
-\def \addressSep {$\diamond$}         % Set default address seperator
+\def \addressSep {$|$}
 
 % One or two address lines can be specified 
 \let \@addressone \relax
@@ -89,7 +98,7 @@
   \sectionlineskip
   \hrule
   \begin{list}{}{
-    \setlength{\leftmargin}{1.5em}
+    \setlength{\leftmargin}{0em}
   }
   \item[]
 }{
@@ -108,11 +117,11 @@
   \emph{#3}                \hfill                  \emph{#4}% Stop a space
   }\smallskip
   % \cdot used for bullets, items non-indented
-  \begin{list}{$\cdot$}{\leftmargin=0em}
-  \itemsep -0.5em \vspace{-0.5em}
+  \begin{list}{-}{}
+  \itemsep -0.5em \vspace{-1em}
 }{
   \end{list}
-  \vspace{0.5em}
+  % \vspace{0.5em}
 }
 
 \def\namesize{\huge}
