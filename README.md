@@ -1,11 +1,7 @@
-# A LaTeX resume template
+# Résumé for Shinwoo Kim
+This repository contains the contents and styling for my résumé. The source content is written in [Markdown](https://en.wikipedia.org/wiki/Markdown) which is processed and compiled into $\LaTeX$, and eventually into a PDF.
 
-`resume.cls` is a document class that adds name and address information to the
-head of the document and provides resume section and subsection environments
-(`rSection` and `rSubsection`).  The address separator format, the
-`rSubsection` heading format, and the skip sizes defined in `resume.cls` can be
-customized.
+The styling is based on Trey Hunner's [template](https://github.com/treyhunner/resume), although I've modified it a little bit.
 
 ### License
-
-Please see LICENSE file.
+The template is originally by Trey Hunner, who relased it under the [MIT License](https://github.com/treyhunner/resume/blob/master/LICENSE); my modifications are released under the same license.
