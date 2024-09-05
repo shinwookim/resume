@@ -23,16 +23,16 @@
 \usepackage{float}
 \usepackage{enumitem}
 \setlist[enumerate,itemize]{
-    topsep=0pt,
-    noitemsep
+  topsep=0pt,
+  noitemsep
 }
 \usepackage{caption}
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=blue,
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=blue,
 }
 \nofiles                            % .aux files are not needed for resumes
 \pagestyle{empty}                   % resumes do not need page numbers
@@ -60,18 +60,18 @@
 
 % \printaddress is used to style an address line (given as input)
 \def \printaddress #1{
-  \begingroup
-    \def \\ {\addressSep\ }
-    \centerline{#1}
-  \endgroup
-  \par
-  \addressskip
+\begingroup
+\def \\ {\addressSep\ }
+\centerline{#1}
+\endgroup
+\par
+\addressskip
 }
 
 % \printname is used to print the name as a page header
 \def \printname {
   \begingroup
-    \centerline{\textbf{\MakeUppercase{\namesize\@name}}}
+  \centerline{\textbf{\MakeUppercase{\namesize\@name}}}
   \endgroup
   \par
   \nameskip
@@ -98,10 +98,10 @@
   \sectionlineskip
   \hrule
   \begin{list}{}{
-    \setlength{\leftmargin}{0em}
-  }
-  \item[]
-}{
+      \setlength{\leftmargin}{0em}
+    }
+    \item[]
+          }{
   \end{list}
 }
 
@@ -113,13 +113,13 @@
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \textbf{#1}                 \hfill                  {    #2}% Stop a space
   \ifthenelse{\equal{#3}{}}{}{
-  \\
-  \emph{#3}                \hfill                  \emph{#4}% Stop a space
+    \\
+    \emph{#3}                \hfill                  \emph{#4}% Stop a space
   }\smallskip
   % \cdot used for bullets, items non-indented
   \begin{list}{-}{}
-  \itemsep -0.5em \vspace{-1em}
-}{
+    \itemsep -0.5em \vspace{-1em}
+    }{
   \end{list}
   % \vspace{0.5em}
 }
