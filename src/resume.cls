@@ -10,14 +10,18 @@
 % without any warranty.
 % 
 % Created by Trey Hunner and modified by Shinwoo Kim
-%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ProvidesClass{resume}[2024/05/30 Resume class]
-
 \LoadClass[10pt,letterpaper]{article}
 
-\usepackage[parfill]{parskip}       % Do not indent paragraphs
+% Required for LinkedIn Logo
+\usepackage{fontawesome5}
+
+% Do not indent paragraphs
+% \usepackage[parfill]{parskip}       
+\setlength\parindent{0pt}
+
 \usepackage{array}                  % required for boldface tabular columns
 \usepackage{ifthen}
 \usepackage{float}
@@ -28,11 +32,15 @@
 }
 \usepackage{caption}
 \usepackage{hyperref}
+\usepackage{multicol}
+
+\usepackage[left=0.5in,top=0.45in,right=0.5in,bottom=0.3in]{geometry}
+
 \hypersetup{
   colorlinks=true,
-  linkcolor=blue,
+  linkcolor=black,
   filecolor=magenta,
-  urlcolor=blue,
+  urlcolor=black,
 }
 \nofiles                            % .aux files are not needed for resumes
 \pagestyle{empty}                   % resumes do not need page numbers
@@ -40,61 +48,46 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % HEADINGS: Commands for printing name and address
 
-\def \name#1{\def\@name{#1}}        % \name command can be used to set name
-\def \@name {}                      % Set \@name to empty by default
+% Provide \name command
+\def \name#1{\def\@name{#1}}
+\def \@name {} % default: empty
 
-\def \addressSep {$|$}
+% Provide \email command
+\def \email#1{\def\@email{#1}}
+\def \@email {} % default: empty
 
-% One or two address lines can be specified 
-\let \@addressone \relax
-\let \@addresstwo \relax
+% Provide \website command
+\def \website#1{\def\@website{#1}}
+\def \@website {} % default: empty
 
-% \address command can be used to set first and second address (optional)
-\def \address #1{
-  \@ifundefined{@addresstwo}{
-    \def \@addresstwo {#1}
-  }{
-    \def \@addressone {#1}
-  }
-}
+% Provide \linkedin command
+\def \linkedin#1{\def\@linkedin{#1}}
+\def \@linkedin {} % default: empty
 
-% \printaddress is used to style an address line (given as input)
-\def \printaddress #1{
-\begingroup
-\def \\ {\addressSep\ }
-\centerline{#1}
-\endgroup
-\par
-\addressskip
-}
-
-% \printname is used to print the name as a page header
-\def \printname {
-  \begingroup
-  \centerline{\textbf{\MakeUppercase{\namesize\@name}}}
-  \endgroup
-  \par
-  \nameskip
-}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DOCUMENT: Create the head of the document
-
-\AtBeginDocument{                     % Begin document
-  \printname                        % Print the name specified with \name
-  \@ifundefined{@addressone}{}{     % Print the first address if specified
-    \printaddress{\@addressone}}
-  \@ifundefined{@addresstwo}{}{     % Print the second address if specified
-    \printaddress{\@addresstwo}}
+% HEADER                                                                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AtBeginDocument{
+    \begingroup
+        \textbf{\huge{\@name}}
+        \hfill
+        {\textsf{\@linkedin}}
+    \endgroup
+    \\
+    \begingroup
+        {\textsf{\@website}}
+        \hfill
+        {\@email}
+    \endgroup
+    \par
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SECTIONS: Create section headings
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Used to create large resume section
 \newenvironment{rSection}[1]{
-  \sectionskip
-  \textbf{\MakeUppercase{#1}}
+    \sectionskip
+\textsc{\large{#1}}
   \sectionlineskip
   \hrule
   \begin{list}{}{
@@ -105,26 +98,14 @@
   \end{list}
 }
 
-% Used to format job listing
-\newenvironment{rSubsection}[4]{
-  %%%%%%%%%%%%%%%%%%%%%% Default Layout: %%%%%%%%%%%%%%%%%%%%%%%%
-  %%    Employer (bold)                     Dates (regular)    %%
-  %%    Title (emphasis)                Location (emphasis)    %%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \textbf{#1}                 \hfill                  {    #2}% Stop a space
-  \ifthenelse{\equal{#3}{}}{}{
+
+\newenvironment{jobListing}[4]{
+    \textbf{#1}\hfill{#2}
     \\
-    \emph{#3}                \hfill                  \emph{#4}% Stop a space
-  }\smallskip
-  % \cdot used for bullets, items non-indented
-  \begin{list}{-}{}
-    \itemsep -0.5em \vspace{-1em}
-    }{
-  \end{list}
-  % \vspace{0.5em}
+    \emph{#3}\hfill\emph{#4}
 }
 
-\def\namesize{\huge}
+
 \def\nameskip{\medskip}
 \def\addressskip{\smallskip}
 \def\sectionskip{\bigskip}
